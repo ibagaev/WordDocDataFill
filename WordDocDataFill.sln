@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordDocDataFill", "WordDocDataFill\WordDocDataFill.csproj", "{908DCBBC-7FBC-4396-AF58-DDD3BBABFBA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDocFillConsole", "TestDocFillConsole\TestDocFillConsole.csproj", "{8C357A19-90E8-41DB-9433-CD8BAB27C868}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{908DCBBC-7FBC-4396-AF58-DDD3BBABFBA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908DCBBC-7FBC-4396-AF58-DDD3BBABFBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908DCBBC-7FBC-4396-AF58-DDD3BBABFBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908DCBBC-7FBC-4396-AF58-DDD3BBABFBA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C357A19-90E8-41DB-9433-CD8BAB27C868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C357A19-90E8-41DB-9433-CD8BAB27C868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C357A19-90E8-41DB-9433-CD8BAB27C868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C357A19-90E8-41DB-9433-CD8BAB27C868}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F874962F-D49C-4D19-B2C9-9F6EF1432A6B}
+	EndGlobalSection
+EndGlobal
