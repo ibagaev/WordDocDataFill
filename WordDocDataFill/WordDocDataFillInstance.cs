@@ -8,10 +8,10 @@ namespace WordDocDataFill
 {
     public class WordDocDataFillInstance : IWordDocDataFill
     {
-        private readonly Application app;
-        private readonly Document _templateDoc;
-        private readonly String _extPath;
-        private readonly object miss = Missing.Value;
+        private Application app;
+        private Document templateDoc;
+        private String extPath;
+        private object miss = Missing.Value;
 
         /// <summary>
         /// 
@@ -20,7 +20,7 @@ namespace WordDocDataFill
         /// <param name="extPath">Path to save result directory. WITHOUT file name</param>
         public WordDocDataFillInstance(string templateDocPath, string extPath)
         {
-            _extPath = extPath;
+            this.extPath = extPath;
             app = new Application();
 
             initializeTemplate(templateDocPath);
@@ -54,7 +54,7 @@ namespace WordDocDataFill
 
             try
             {
-                _templateDoc = app.Documents.Open(
+                templateDoc = app.Documents.Open(
                     ref templateDocPathObj,
                     ref confirmConversions,
                     ref readOnly,
@@ -72,12 +72,12 @@ namespace WordDocDataFill
                     ref noEncodingDialog,
                     ref xMLTransform);
 
-                _templateDoc.Activate();
+                templateDoc.Activate();
             }
             catch (Exception ex)
             {
-                _templateDoc.Close(false, ref miss, ref miss);
-                _templateDoc = null;
+                templateDoc.Close(false, ref miss, ref miss);
+                templateDoc = null;
                 app = null;
                 throw ex;
             }
@@ -130,7 +130,7 @@ namespace WordDocDataFill
             }
             finally
             {
-                _templateDoc.Close(false, ref miss, ref miss);
+                templateDoc.Close(false, ref miss, ref miss);
                 app.Quit(false);
             }
         }
@@ -139,10 +139,10 @@ namespace WordDocDataFill
         {
             try
             {
-                object fileName = _extPath + $"\\{exitDocName}";
+                object fileName = extPath + $"\\{exitDocName}";
                 object fileFormat = WdSaveFormat.wdFormatDocumentDefault;
 
-                _templateDoc.SaveAs2(fileName, fileFormat);
+                templateDoc.SaveAs2(fileName, fileFormat);
             }
             catch (Exception ex)
             {
@@ -150,7 +150,7 @@ namespace WordDocDataFill
             }
             finally
             {
-                _templateDoc.Close(false, ref miss, ref miss);
+                templateDoc.Close(false, ref miss, ref miss);
                 app.Quit(false);
             }
 
