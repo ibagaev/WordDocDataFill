@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Office.Interop.Word;
 using System.Reflection;
-using Microsoft.Office.Core;
+
 
 namespace WordDocDataFill
 {
     public class WordDocDataFillInstance : IWordDocDataFill
     {
-        private Application app;
-        private Document _templateDoc;
+        private readonly Application app;
+        private readonly Document _templateDoc;
         private readonly String _extPath;
-        private object miss = Missing.Value;
+        private readonly object miss = Missing.Value;
 
         /// <summary>
         /// 
@@ -26,6 +23,18 @@ namespace WordDocDataFill
             _extPath = extPath;
             app = new Application();
 
+            initializeTemplate(templateDocPath);
+        }
+
+        public void FillDocument(Dictionary<string, string> values, string exitDocName)
+        {
+            findAndReplace(values);
+            
+            saveResult(exitDocName);
+        }
+
+        private void initializeTemplate(string templateDocPath)
+        {
             object templateDocPathObj = templateDocPath;
             object confirmConversions = false;
             object readOnly = true;
@@ -45,10 +54,27 @@ namespace WordDocDataFill
 
             try
             {
-                _templateDoc = app.Documents.Open(ref templateDocPathObj, ref confirmConversions, ref readOnly, ref addToRecentFiles, ref passwordDocument, ref passwordTemplate, ref revert, ref writePasswordDocument, ref writePasswordTemplate, ref format, ref encoding, ref visible, ref openAndRepair, ref documentDirection, ref noEncodingDialog, ref xMLTransform);
+                _templateDoc = app.Documents.Open(
+                    ref templateDocPathObj,
+                    ref confirmConversions,
+                    ref readOnly,
+                    ref addToRecentFiles,
+                    ref passwordDocument,
+                    ref passwordTemplate,
+                    ref revert,
+                    ref writePasswordDocument,
+                    ref writePasswordTemplate,
+                    ref format,
+                    ref encoding,
+                    ref visible,
+                    ref openAndRepair,
+                    ref documentDirection,
+                    ref noEncodingDialog,
+                    ref xMLTransform);
+
                 _templateDoc.Activate();
             }
-            catch( Exception ex)
+            catch (Exception ex)
             {
                 _templateDoc.Close(false, ref miss, ref miss);
                 _templateDoc = null;
@@ -57,7 +83,7 @@ namespace WordDocDataFill
             }
         }
 
-        public void FillDocument(Dictionary<string, string> values, string exitDocName)
+        private void findAndReplace(Dictionary<string, string> values)
         {
             object matchCase = false;
             object matchWholeWord = true;
@@ -80,15 +106,25 @@ namespace WordDocDataFill
                     object replKey = kvp.Key;
                     object replValue = kvp.Value;
 
-                    app.Selection.Find.Execute(ref replKey, ref matchCase, ref matchWholeWord, ref matchWildCards, ref matchSoundsLike, ref matchAllWordForms, ref forward, ref wrap, ref format, ref replValue, ref replace, ref matchKashida, ref matchDiacritics, ref matchAlefHamza, ref matchControl);
+                    app.Selection.Find.Execute(
+                        ref replKey,
+                        ref matchCase,
+                        ref matchWholeWord,
+                        ref matchWildCards,
+                        ref matchSoundsLike,
+                        ref matchAllWordForms,
+                        ref forward,
+                        ref wrap,
+                        ref format,
+                        ref replValue,
+                        ref replace,
+                        ref matchKashida,
+                        ref matchDiacritics,
+                        ref matchAlefHamza,
+                        ref matchControl);
                 }
-
-                object fileName = _extPath + $"\\{exitDocName}";
-                object fileFormat = WdSaveFormat.wdFormatDocumentDefault;
-
-                _templateDoc.SaveAs2(fileName, fileFormat);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -97,6 +133,27 @@ namespace WordDocDataFill
                 _templateDoc.Close(false, ref miss, ref miss);
                 app.Quit(false);
             }
+        }
+
+        private void saveResult(string exitDocName)
+        {
+            try
+            {
+                object fileName = _extPath + $"\\{exitDocName}";
+                object fileFormat = WdSaveFormat.wdFormatDocumentDefault;
+
+                _templateDoc.SaveAs2(fileName, fileFormat);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _templateDoc.Close(false, ref miss, ref miss);
+                app.Quit(false);
+            }
+
         }
     }
 }

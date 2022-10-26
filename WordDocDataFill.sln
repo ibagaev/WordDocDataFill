@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordDocDataFill", "WordDocD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDocFillConsole", "TestDocFillConsole\TestDocFillConsole.csproj", "{8C357A19-90E8-41DB-9433-CD8BAB27C868}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordDocumentGenerator", "WordDocumentGenerator\WordDocumentGenerator.csproj", "{15F69FB1-A0A1-4430-8861-80D4F0DA9FCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8C357A19-90E8-41DB-9433-CD8BAB27C868}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C357A19-90E8-41DB-9433-CD8BAB27C868}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C357A19-90E8-41DB-9433-CD8BAB27C868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F69FB1-A0A1-4430-8861-80D4F0DA9FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F69FB1-A0A1-4430-8861-80D4F0DA9FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F69FB1-A0A1-4430-8861-80D4F0DA9FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F69FB1-A0A1-4430-8861-80D4F0DA9FCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

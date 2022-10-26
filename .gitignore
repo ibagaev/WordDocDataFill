@@ -361,3 +361,21 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/WordDocumentGenerator/WordDocumentGenerator.csproj
+/WordDocumentGenerator/WDGMainForm.resx
+/WordDocumentGenerator/WDGMainForm.Designer.cs
+/WordDocumentGenerator/WDGMainForm.cs
+/WordDocumentGenerator/ThisAddIn.Designer.xml
+/WordDocumentGenerator/ThisAddIn.Designer.cs
+/WordDocumentGenerator/ThisAddIn.cs
+/WordDocumentGenerator/Properties/Settings.settings
+/WordDocumentGenerator/Properties/Settings.Designer.cs
+/WordDocumentGenerator/Properties/Resources.resx
+/WordDocumentGenerator/Properties/Resources.Designer.cs
+/WordDocumentGenerator/Properties/AssemblyInfo.cs
+/WordDocumentGenerator/Properties
+/WordDocumentGenerator/IBGDevRibbon.resx
+/WordDocumentGenerator/IBGDevRibbon.Designer.cs
+/WordDocumentGenerator/IBGDevRibbon.cs
+/WordDocumentGenerator/app.config
+/WordDocumentGenerator
